@@ -14,7 +14,8 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin: process.env.CLIENT_URL
+    origin: process.env.CLIENT_URL,
+    exposedHeaders: ['access-token'],
 }));
 app.use(cookieParser());
 app.use(fileUpload());
