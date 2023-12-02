@@ -55,6 +55,15 @@ class TokenService {
         return { refreshToken, accessToken };
     }
 
+    verifyAccess(token: string): IUser | null {
+        try {
+            const userData = jwt.verify(token, process.env.ACCESS_SECRET);
+            return userData as IUser;
+        } catch(e) {
+            return null;
+        }
+    }
+
 }
 
 export default new TokenService;

@@ -30,6 +30,15 @@ class MailService {
         return this.sendMail(to, `Confirm your account on - ${process.env.APP_NAME}`, html)
     }
 
+    async forgotPassword(to: string, code: string): Promise<void> {
+        const html = `
+        <p>Your change password code - ${code}</p>
+        <p>The code will be valid for 5 minutes</p>
+        `;
+
+        return this.sendMail(to, `Confirm your account on - ${process.env.APP_NAME}`, html)
+    }
+
     async sendMail(to: string, subject: string, html: string): Promise<void> {
         try {
             return await MailService.transporter.sendMail({

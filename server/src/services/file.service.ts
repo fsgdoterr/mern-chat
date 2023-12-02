@@ -25,6 +25,17 @@ class FileService {
         return {filePath, fileName};
     }
 
+    async removeFile(filePath: string): Promise<void> {
+        try {
+            fs.rm(filePath, (err) => {
+                if(err)
+                    throw err;
+            });
+        } catch(e) {
+            console.log(e);
+        }
+    }
+
     async createDir(dirPath: string): Promise<string> {
         return new Promise((res, rej) => {
             fs.mkdir(dirPath, {recursive: true}, (err) => {

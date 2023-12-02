@@ -17,10 +17,17 @@ export interface IUser {
     id: string;
     email: string;
     name: string;
-    avatar?: string;
+    avatar: string;
     isVerified: boolean;
     createdAt: Date;
     updatedAt: Date;
 }
 
-export interface IUserModel extends Model<IRawUser> {};
+export interface IRawUserMethods {
+    getAvatarUrl(): string;
+}
+
+
+export interface IPublicUser extends Omit<IUser, 'email' | 'isVerified' | 'createdAt' | 'updatedAt'> {};
+
+export interface IUserModel extends Model<IRawUser, {}, IRawUserMethods> {};
