@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
 import router from './routes';
 import errorMiddleware from './middlewares/error.middleware';
+import path from 'path';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use(fileUpload());
 app.use(`/api/v${process.env.API_VERSION}`, router);
+app.use(`/api/v${process.env.API_VERSION}/public`, express.static(path.resolve(__dirname, '..', 'public')));
 app.use(errorMiddleware);
 
 const startApp = async () => {
