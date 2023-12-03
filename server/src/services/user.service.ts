@@ -9,6 +9,7 @@ import { IPublicUser, IUser } from "../interfaces/user.interface";
 import mailService from "./mail.service";
 import { TIME } from "../utils/const";
 import path from "path";
+import tokenService from "./token.service";
 
 class UserService {
 
@@ -73,6 +74,15 @@ class UserService {
         const userDto = new UserDTO(candidate);
 
         return userDto.getDto();
+    }
+
+    async refresh(refreshToken: string): Promise<IUser> {
+        const userData = tokenService.verifyRefresh(refreshToken);
+
+        if(!userData)
+            throw ApiError.unauthorized();
+
+        return userData;
     }
 
     async generateVerificationCode(

@@ -41,12 +41,13 @@ class AuthController {
         try {
             const { refreshToken } = req.cookies;
 
+            const user = await userService.refresh(refreshToken);
             const { accessToken, refreshToken: newRefreshToken } = await tokenService.refresh(refreshToken);
 
             cookieService.setRefreshToken(res, newRefreshToken);
             res.header('access-token', accessToken);
 
-            res.sendStatus(200);
+            res.json(user);
         } catch(e) {
             next(e);
         }
