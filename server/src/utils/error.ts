@@ -19,4 +19,12 @@ export default class ApiError extends Error {
     static forbidden(message: string = 'You don\'t have access', errors: any[] = []) {
         return new ApiError(403, message, errors);
     }
+
+    getError() {
+        return {
+            status: this.status,
+            message: this.message,
+            errors: this.errors,
+        }
+    }
 }

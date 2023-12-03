@@ -6,7 +6,7 @@ export default (err: ApiError | Error, req: Request, res: Response, next: NextFu
     console.log(err);
     
     if(err instanceof ApiError) {
-        return res.status(err.status).json({...err});
+        return res.status(err.status).json(err.getError());
     }
 
     return res.status(500).json({
