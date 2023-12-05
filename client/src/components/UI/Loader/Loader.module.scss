@@ -1,0 +1,98 @@
+@import '../../../utils/colors.scss';
+
+.pounds {
+    display: flex;
+    gap: 5px;
+}
+
+.light {
+    .pound {
+        background: #fff;
+    }
+}
+
+.dark {
+    .pound {
+        background: $black;
+    }
+}
+
+.pound {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.pound1 {
+    animation: pound1 2s linear forwards infinite;
+}
+
+.pound2 {
+    animation: pound2 2s linear forwards infinite;
+}
+
+.pound3 {
+    animation: pound3 2s linear forwards infinite;
+}
+
+
+@keyframes pound1 {
+    0% {
+        opacity: .5;
+        transform: scale(1);
+    }   
+    16% {
+        opacity: 1;
+        transform: scale(1.25);
+    } 
+    33% {
+        opacity: .5;
+        transform: scale(1);
+    }
+    100% {
+        opacity: .5;
+        transform: scale(1);
+    }
+}
+
+@keyframes pound2 {
+    0% {
+        opacity: .5;
+        transform: scale(1);
+    }   
+    33% {
+        opacity: .5;
+        transform: scale(1);
+    } 
+    49% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+    66% {
+        opacity: .5;
+        transform: scale(1);
+    }
+    100% {
+        opacity: .5;
+        transform: scale(1);
+    }
+}
+
+@keyframes pound3 {
+    0% {
+        opacity: .5;
+        transform: scale(1);
+    }   
+    66% {
+        opacity: .5;
+        transform: scale(1);
+    } 
+    82% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+    100% {
+        opacity: .5;
+        transform: scale(1);
+    }
+}
