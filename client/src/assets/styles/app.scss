@@ -69,3 +69,7 @@ p {
 .flex-column {
     flex-direction: column;
 }
+
+svg, img {
+    display: block;
+}

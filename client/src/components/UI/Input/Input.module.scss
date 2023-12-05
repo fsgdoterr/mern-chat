@@ -1,0 +1,48 @@
+@import '../../../utils/colors.scss';
+
+.input {
+    border: solid 1px $lightgrey-2;
+    border-radius: 6px;
+    overflow: hidden;
+    display: inline-flex;
+
+    input {
+        border: none;
+        padding: 10px;
+        background: #fff;
+        font-size: 16px;
+        color: $black;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &.readOnly {
+        input {
+            background: $bg;
+        }
+    }
+
+    &.error {
+        border-color: $red;
+        
+        .icon {
+            border-color: $red;
+        }
+    }
+}   
+
+.icon {
+    width: 39px;
+    background: $bg;
+    border-right: solid 1px $lightgrey-2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 25px;
+        height: 25px;
+    }
+}
