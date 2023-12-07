@@ -1,0 +1,15 @@
+@import '../../utils/colors.scss';
+
+.card {
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    a {
+        color: $blue;
+        text-decoration: none;
+        text-align: center;
+    }
+}

@@ -73,3 +73,15 @@ p {
 svg, img {
     display: block;
 }
+
+label {
+    display: flex;
+    flex-direction: column;
+
+    span.label {
+        font-weight: 900;
+        font-size: 14px;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+}
