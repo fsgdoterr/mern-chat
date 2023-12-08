@@ -1,0 +1,14 @@
+@import '../../../utils/colors.scss';
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.back {
+    text-align: center;
+    margin-top: 10px;
+    color: $blue;
+    text-decoration: none;
+}

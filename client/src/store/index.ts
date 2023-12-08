@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import rootSlice from "./slices/rootSlice";
+import modalSlice from "./slices/modalSlice";
 
 
 const store = configureStore({
     reducer: {
         root: rootSlice,
+        modals: modalSlice
     },
 });
 

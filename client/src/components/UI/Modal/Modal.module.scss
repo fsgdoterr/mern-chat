@@ -1,0 +1,29 @@
+@import '../../../utils/colors.scss';
+
+.modal {
+    max-width: 420px;
+    width: 100%;
+    background: #fff;
+    padding: 34px;
+    transition: .2s ease;
+    border-radius: 16px;
+    box-shadow: $box-shadow;
+    
+    transform: scale(0);
+}
+
+.enterActive {
+    transform: scale(1);
+}
+
+.enterDone {
+    transform: scale(1);
+}
+
+.exit {
+    transform: scale(0);
+}
+
+.exitActive {
+    transform: scale(0);
+}

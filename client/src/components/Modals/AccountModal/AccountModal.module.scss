@@ -1,0 +1,24 @@
+@import '../../../utils/colors.scss';
+
+.avatar {
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.data {
+    text-align: center;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 10px;
+}
+
+.back {
+    text-align: center;
+    text-decoration: none;
+    color: $blue;
+    margin-top: 20px;
+}

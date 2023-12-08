@@ -1,19 +1,21 @@
-import React,{ useState } from 'react'
-import UnauthorizedCard from '../../components/UnauthorizedCard/UnauthorizedCard';
+import React, { useState } from 'react'
+import styles from './ChangePassword.module.scss';
+import Modal from '../../UI/Modal/Modal';
+import { useModals } from '../../../hooks/useModals';
+import { MODALS } from '../../../store/slices/modalSlice';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch } from '../../hooks/redux';
-import { useFetching } from '../../hooks/useFetching';
-import { useErrorHandling } from '../../hooks/useErrorHandling';
-import Label from '../../components/UI/Label/Label';
-import Input from '../../components/UI/Input/Input';
+import { useAppDispatch } from '../../../hooks/redux';
+import { useFetching } from '../../../hooks/useFetching';
+import UserService from '../../../services/UserService';
+import { useErrorHandling } from '../../../hooks/useErrorHandling';
+import { setUser } from '../../../store/slices/rootSlice';
+import Label from '../../UI/Label/Label';
+import Input from '../../UI/Input/Input';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
-import Button from '../../components/UI/Button/Button';
-import { NavLink } from 'react-router-dom';
-import ErrorPlate from '../../components/UI/ErrorPlate/ErrorPlate';
-import { FaBarcode } from "react-icons/fa6";
+import ErrorPlate from '../../UI/ErrorPlate/ErrorPlate';
+import { FaBarcode } from 'react-icons/fa6';
 import { TbPassword } from 'react-icons/tb';
-import UserService from '../../services/UserService';
-import { setUser } from '../../store/slices/rootSlice';
+import Button from '../../UI/Button/Button';
 
 interface FormValues {
     email: string;
@@ -22,7 +24,15 @@ interface FormValues {
     confirmPassword: string;
 }
 
-const ForgotPassword = () => {
+const ChangePassword = () => {
+
+    const { isOpen, back } = useModals();
+
+    const backClickHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        back();
+    }
+
     const {
         register,
         formState: { errors },
@@ -45,14 +55,15 @@ const ForgotPassword = () => {
 
     const changePassword: SubmitHandler<FormValues> = async ({email, code, password, confirmPassword}) => {
         const response = await UserService.changePassword(email, code, password, confirmPassword);
-        dispatch(setUser(response.data));
+        setStep(0);
+        back();
     }
 
     const fieldErrors = useErrorHandling(errors, error, [errors.email, errors.code, errors.password, errors.confirmPassword]);
-
+    
     return (
-        <div className='h-full flex flex-center'>
-            <UnauthorizedCard header='Forgot password?' onSubmit={handleSubmit(fetching)}>
+        <Modal isOpen={isOpen(MODALS.CHANGE_PASSWORD)}>
+            <form className={styles.modal} onSubmit={handleSubmit(fetching)}>
                 <Label label='Email'>
                     <Input 
                         icon={<MdOutlineAlternateEmail />}
@@ -125,12 +136,12 @@ const ForgotPassword = () => {
                 <Button loading={isLoading}>
                     CHANGE PASSWORD
                 </Button>
-                <NavLink to="/signin">
+                <a href="#" onClick={backClickHandler} className={styles.back}>
                     Back
-                </NavLink>
-            </UnauthorizedCard>
-        </div>
+                </a>
+            </form>
+        </Modal>
     )
 }
 
-export default ForgotPassword
+export default ChangePassword

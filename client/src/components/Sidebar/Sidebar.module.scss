@@ -1,0 +1,8 @@
+@import '../../utils/colors.scss';
+
+.sidebar {
+    max-width: 375px;
+    width: 100%;
+    border-right: solid 1px $lightgrey-2;
+    padding: 15px;
+}

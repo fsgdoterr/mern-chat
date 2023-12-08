@@ -19,4 +19,9 @@ export default class UserService {
         return response;
     }
 
+    static async update(formData: FormData): Promise<AxiosResponse<IUser>> {
+        const response = await $api.patch<IUser>(`/user/`, formData);
+        return response;
+    }
+
 }

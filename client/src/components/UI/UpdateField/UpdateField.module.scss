@@ -1,0 +1,32 @@
+@import '../../../utils/colors.scss';
+
+.updateField {
+    display: flex;
+    gap: 10px;
+}
+
+.input {
+    flex-grow: 1;
+}
+
+.button {
+    padding: 7px 14px;
+
+    svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.inputReadonly {
+    border: none;
+    padding: 10px;
+    background: #fff;
+    font-size: 16px;
+    color: rgb(33, 33, 33);
+    flex-grow: 1;
+    border: solid 1px rgb(176, 190, 197);
+    border-radius: 6px;
+    margin: 0;
+    background: #eeeeee;
+}
