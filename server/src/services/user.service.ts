@@ -82,7 +82,10 @@ class UserService {
         if(!userData)
             throw ApiError.unauthorized();
 
-        return userData;
+        const user = await userModel.findById(userData.id);
+
+        const userDto = new UserDTO(user!);
+        return userDto.getDto();
     }
 
     async generateVerificationCode(
@@ -200,7 +203,7 @@ class UserService {
 
             const { fileName } = await fileService.uploadFile(avatar);
             user.avatar = fileName;
-
+            
             await user.save();
 
             if(oldAvatarName) {

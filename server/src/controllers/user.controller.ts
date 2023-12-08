@@ -81,7 +81,7 @@ class UserController {
 
             const user = await userService.update(id, name, email, avatar || !removeAvatar);
 
-            res.sendStatus(200);
+            res.json(user);
         } catch(e) {
             next(e);
         }
